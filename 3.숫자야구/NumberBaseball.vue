@@ -7,7 +7,7 @@
     </form>
     <div>시도 : {{ tries.length }}</div>
     <ul>
-      <li v-for="(t, k) in tries" v-bind:key="k">
+      <li v-for="t in tries" v-bind:key="t.try">
         <div>{{ t.try }}</div>
         <div>{{ t.result }}</div>
       </li>
@@ -20,7 +20,10 @@ const getNumber = () => {
   const candidates = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   const arr = [];
   for (let i = 0; i < 4; i++) {
-    const chosen = candidates.splice(Math.floor(Math.random() * (9 - i)), 1)[0];
+    const chosen = candidates.splice(
+      Math.floor(Math.random() * (9 - i)),
+      1,
+    )[0];
     arr.push(chosen);
   }
   return arr;
